@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farooqui - Complete Ethnic Wear Catalog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #d4af37;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            background-size: 50px 50px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(17, 17, 17, 0.95);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.02) 50%, transparent 100%),
+                repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.02) 5px, rgba(212, 175, 55, 0.02) 10px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #d4af37;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #f0e6d2;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            color: #f0e6d2;
+        }
+
+        .catalog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .category-header {
+            background-color: #000;
+            color: #d4af37;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-header i {
+            font-size: 1.5rem;
+        }
+
+        .category-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .products {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .product {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: rgba(26, 26, 26, 0.7);
+            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .slider-container {
+            position: relative;
+            height: 700px; /* A4-like height */
+            overflow: hidden;
+            background-color: #000;
+            border: 2px solid #d4af37;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Changed to contain for better product display */
+            flex-shrink: 0;
+            background-color: #000;
+            cursor: zoom-in;
+        }
+
+        .design-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4af37;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-dot.active {
+            background-color: #d4af37;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(212, 175, 55, 0.8);
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .slider-arrow:hover {
+            background-color: rgba(212, 175, 55, 1);
+        }
+
+        .slider-arrow.prev {
+            left: 15px;
+        }
+
+        .slider-arrow.next {
+            right: 15px;
+        }
+
+        /* Zoom Controls */
+        .zoom-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+        }
+
+        .zoom-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        /* Zoom Modal */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+        }
+
+        .zoom-image-container {
+            max-width: 90%;
+            max-height: 80%;
+            position: relative;
+            overflow: auto;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .zoom-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-controls-modal {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #d4af37;
+        }
+
+        .modal-zoom-btn {
+            background-color: transparent;
+            color: #d4af37;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .modal-zoom-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .zoom-info {
+            color: #d4af37;
+            margin-top: 15px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #d4af37;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #d4af37;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            border-top: 2px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #d4af37;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .slider-container {
+                height: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                padding: 15px;
+            }
+            
+            .slider-container {
+                height: 500px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .design-number {
+                font-size: 1.8rem;
+            }
+            
+            .zoom-controls {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .zoom-btn {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                height: 400px;
+            }
+            
+            .design-number {
+                font-size: 1.5rem;
+                padding: 8px 15px;
+            }
+            
+            .zoom-controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">FAROOQUI</div>
+            <div class="tagline">Exquisite Ethnic Wear for Every Occasion</div>
+            <div class="contact-info">
+                <div><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Mumbai</div>
+                <div><i class="fas fa-phone"></i> +91 98765 43210</div>
+                <div><i class="fas fa-envelope"></i> info@farooqui.com</div>
+            </div>
+        </header>
+
+        <div class="catalog-container">
+            <!-- Sherwani: Farma -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-crown"></i>
+                    <h2>Sherwani: Farma Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #FA-001</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Royal Farma Sherwani">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Royal Farma Sherwani Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sherwani: Velvet -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-gem"></i>
+                    <h2>Sherwani: Velvet Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #VE-002</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVsdmV0JTIwc2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Velvet Royal Sherwani">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Velvet Royal Sherwani Detail">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sherwani: Georgette -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-wind"></i>
+                    <h2>Sherwani: Georgette Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="3">
+                                <div class="design-number">Design #GE-003</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Georgette Elegance Sherwani">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Georgette Elegance Sherwani Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sherwani: Diverse Fabric -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-tshirt"></i>
+                    <h2>Sherwani: Diverse Fabric Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="4">
+                                <div class="design-number">Design #DF-004</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Diverse Fabric Sherwani">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Diverse Fabric Sherwani Detail">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Open Indo: Georgette -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-vest"></i>
+                    <h2>Open Indo: Georgette Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="5">
+                                <div class="design-number">Design #OI-005</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kb3dlc3Rlcm4lMjB3ZWFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Georgette Open Indo">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZG93ZXN0ZXJuJTIwd2VhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Georgette Open Indo Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Semi Indo: Diverse Fabric -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-vest-patches"></i>
+                    <h2>Semi Indo: Diverse Fabric Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="6">
+                                <div class="design-number">Design #SI-006</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kb3dlc3Rlcm4lMjB3ZWFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Semi Indo Diverse Fabric">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZG93ZXN0ZXJuJTIwd2VhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Semi Indo Diverse Fabric Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jodhpuri: Diverse Fabric -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-user-tie"></i>
+                    <h2>Jodhpuri: Diverse Fabric Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="7">
+                                <div class="design-number">Design #JD-007</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8am9kaHB1cmklMjBzdWl0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Jodhpuri Diverse Fabric">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGpvZGhwdXJpJTIwc3VpdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Jodhpuri Diverse Fabric Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kurta: Chicken Fabric -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-tshirt"></i>
+                    <h2>Kurta: Chicken Fabric Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="8">
+                                <div class="design-number">Design #KC-008</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a3VydGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Chicken Fabric Kurta">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGt1cnRhfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Chicken Fabric Kurta Detail">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kurta: Pintex -->
+            <section class="category">
+                <div class="category-header">
+                    <i class="fas fa-tshirt"></i>
+                    <h2>Kurta: Pintex Collection</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="9">
+                                <div class="design-number">Design #KP-009</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a3VydGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Pintex Kurta">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGt1cnRhfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Pintex Kurta Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Visit Our Store</h3>
+                    <p>123 Fashion Street</p>
+                    <p>Mumbai, Maharashtra 400001</p>
+                    <p>India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@farooqui.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 10AM-8PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Farooqui Ethnic Wear. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div class="zoom-modal">
+        <div class="close-modal">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="zoom-image-container">
+            <img class="zoom-image" src="" alt="Zoomed Product Image">
+        </div>
+        <div class="zoom-controls-modal">
+            <button class="modal-zoom-btn zoom-out" title="Zoom Out">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button class="modal-zoom-btn zoom-reset" title="Reset Zoom">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="modal-zoom-btn zoom-in" title="Zoom In">
+                <i class="fas fa-search-plus"></i>
+            </button>
+        </div>
+        <div class="zoom-info">
+            Use mouse wheel to zoom in/out • Click and drag to pan
+        </div>
+    </div>
+
+    <script>
+        // Store current slide for each slider
+        const sliderStates = new Map();
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all sliders
+            const sliders = document.querySelectorAll('.slider-container');
+            
+            sliders.forEach((container, index) => {
+                const sliderId = container.dataset.sliderId || index;
+                const slider = container.querySelector('.slider');
+                const slides = slider.querySelectorAll('img');
+                const dots = container.querySelectorAll('.slider-dot');
+                const prevBtn = container.querySelector('.slider-arrow.prev');
+                const nextBtn = container.querySelector('.slider-arrow.next');
+                
+                // Initialize slider state
+                sliderStates.set(sliderId, 0);
+                let currentSlide = 0;
+                const totalSlides = slides.length;
+                
+                // Function to update slider position
+                function updateSlider() {
+                    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    sliderStates.set(sliderId, currentSlide);
+                    
+                    // Update dots
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                }
+                
+                // Next slide
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateSlider();
+                });
+                
+                // Previous slide
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateSlider();
+                });
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateSlider();
+                    });
+                });
+                
+                // Auto slide (optional)
+                setInterval(() => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateSlider();
+                }, 5000);
+            });
+
+            // Zoom functionality
+            const zoomModal = document.querySelector('.zoom-modal');
+            const zoomImage = document.querySelector('.zoom-image');
+            const closeModal = document.querySelector('.close-modal');
+            const zoomInBtn = document.querySelector('.zoom-in');
+            const zoomOutBtn = document.querySelector('.zoom-out');
+            const zoomResetBtn = document.querySelector('.zoom-reset');
+            const zoomBtns = document.querySelectorAll('.zoom-btn');
+            
+            let currentZoom = 1;
+            
+            // Open zoom modal
+            zoomBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sliderContainer = this.closest('.slider-container');
+                    const sliderId = sliderContainer.dataset.sliderId;
+                    const currentSlideIndex = sliderStates.get(sliderId) || 0;
+                    const slider = sliderContainer.querySelector('.slider');
+                    const slides = slider.querySelectorAll('img');
+                    
+                    if (slides[currentSlideIndex]) {
+                        zoomImage.src = slides[currentSlideIndex].src;
+                        zoomModal.classList.add('active');
+                        currentZoom = 1;
+                        updateZoom();
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                zoomModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                currentZoom = 1;
+                updateZoom();
+            });
+            
+            // Close modal when clicking outside the image
+            zoomModal.addEventListener('click', function(e) {
+                if (e.target === zoomModal) {
+                    zoomModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    currentZoom = 1;
+                    updateZoom();
+                }
+            });
+            
+            // Zoom in
+            zoomInBtn.addEventListener('click', function() {
+                currentZoom = Math.min(currentZoom + 0.25, 3);
+                updateZoom();
+            });
+            
+            // Zoom out
+            zoomOutBtn.addEventListener('click', function() {
+                currentZoom = Math.max(currentZoom - 0.25, 1);
+                updateZoom();
+            });
+            
+            // Reset zoom
+            zoomResetBtn.addEventListener('click', function() {
+                currentZoom = 1;
+                updateZoom();
+            });
+            
+            // Update zoom level
+            function updateZoom() {
+                zoomImage.style.transform = `scale(${currentZoom})`;
+            }
+            
+            // Mouse wheel zoom
+            zoomModal.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    // Zoom in
+                    currentZoom = Math.min(currentZoom + 0.1, 3);
+                } else {
+                    // Zoom out
+                    currentZoom = Math.max(currentZoom - 0.1, 1);
+                }
+                updateZoom();
+            });
+            
+            // Keyboard controls
+            document.addEventListener('keydown', function(e) {
+                if (!zoomModal.classList.contains('active')) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        zoomModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                        currentZoom = 1;
+                        updateZoom();
+                        break;
+                    case '+':
+                    case '=':
+                        e.preventDefault();
+                        currentZoom = Math.min(currentZoom + 0.25, 3);
+                        updateZoom();
+                        break;
+                    case '-':
+                        e.preventDefault();
+                        currentZoom = Math.max(currentZoom - 0.25, 1);
+                        updateZoom();
+                        break;
+                    case '0':
+                        e.preventDefault();
+                        currentZoom = 1;
+                        updateZoom();
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
