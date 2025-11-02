@@ -419,6 +419,64 @@
             font-size: 0.9rem;
         }
 
+        .sticky-filter {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            border-bottom: 2px solid #d4af37;
+            z-index: 100;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #000;
+        }
+
+        .filter-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .filter-container::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        .filter-container::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 3px;
+        }
+
+        .filter-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #d4af37;
+            color: #000;
+            font-weight: bold;
+        }
+
         @media (max-width: 1024px) {
             .slider-container {
                 height: 600px;
@@ -452,6 +510,16 @@
                 width: 35px;
                 height: 35px;
             }
+            
+            .filter-container {
+                gap: 8px;
+                padding: 0 15px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -468,6 +536,15 @@
                 flex-direction: column;
                 gap: 5px;
             }
+            
+            .sticky-filter {
+                padding: 10px 0;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -475,34 +552,375 @@
     <div class="container">
         <header>
             <div class="logo">FAROOQUI</div>
-            <div class="tagline">Exquisite Ethnic Wear for Every Occasion</div>
+            <div class="tagline">A choice that reflects true distinction</div>
             <div class="contact-info">
-                <div><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Mumbai</div>
-                <div><i class="fas fa-phone"></i> +91 98765 43210</div>
-                <div><i class="fas fa-envelope"></i> info@farooqui.com</div>
+                <div><i class="fas fa-map-marker-alt"></i> Bandra(West), Mumbai: 400050</div>
+                <div><i class="fas fa-phone"></i> +91 8424008224</div>
+                <div><i class="fas fa-envelope"></i> farooquiclothes@gmail.com</div>
             </div>
         </header>
 
+        <!-- Sticky Filter -->
+        <div class="sticky-filter">
+            <div class="filter-container">
+                <button class="filter-btn active" data-category="all">All Collections</button>
+                <button class="filter-btn" data-category="sherwani-farma">Sherwani: Farma</button>
+                <button class="filter-btn" data-category="sherwani-velvet">Sherwani: Velvet</button>
+                <button class="filter-btn" data-category="sherwani-georgette">Sherwani: Georgette</button>
+                <button class="filter-btn" data-category="sherwani-diverse-fabric">Sherwani: Diverse Fabric</button>
+                <button class="filter-btn" data-category="open-indo-georgette">Open Indo: Georgette</button>
+                <button class="filter-btn" data-category="open-indo-diverse-fabric">Open Indo: Diverse Fabric</button>
+                <button class="filter-btn" data-category="semi-indo-diverse-fabric">Semi Indo: Diverse Fabric</button>
+                <button class="filter-btn" data-category="indo-western-diverse-fabric">Indo Western: Diverse Fabric</button>
+                <button class="filter-btn" data-category="jodhpuri-diverse-fabric">Jodhpuri</button>
+                <button class="filter-btn" data-category="kurta-chicken">Kurta: Chicken</button>
+                <button class="filter-btn" data-category="kurta-pintex">Kurta: Pintex</button>
+            </div>
+        </div>
+
         <div class="catalog-container">
             <!-- Sherwani: Farma -->
-            <section class="category">
+            <section class="category" data-category="sherwani-farma">
                 <div class="category-header">
                     <i class="fas fa-crown"></i>
-                    <h2>Sherwani: Farma Collection</h2>
+                    <h2>Sherwani: Farma</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
                             <div class="slider-container" data-slider-id="1">
-                                <div class="design-number">Design #FA-001</div>
+                                <div class="design-number">Design #SH25001</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Royal Farma Sherwani">
-                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25001\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25001\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25001\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25002</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25002\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25002\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25002\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25003</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25003\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25003\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25003\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25004</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25004\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25004\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25004\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25009</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25009\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25009\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25009\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25019</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25019\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25019\Back.jpg" alt="Royal Farma Sherwani Back"> -->
+                                    <img src="Collections\Sherwani\SH25019\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25020</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25020\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25020\Back.jpg" alt="Royal Farma Sherwani Back"> -->
+                                    <img src="Collections\Sherwani\SH25020\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25025</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25025\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25025\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25025\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25040</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25040\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25040\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25040\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25041</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25041\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25041\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25041\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25042</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25042\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25042\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25042\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25043</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25043\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25043\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25043\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25044</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25044\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25044\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25044\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25045</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25045\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25045\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <!-- <img src="Collections\Sherwani\SH25045\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="1">
+                                <div class="design-number">Design #SH25046</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25046\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25046\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25046\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -517,24 +935,48 @@
             </section>
 
             <!-- Sherwani: Velvet -->
-            <section class="category">
+            <section class="category" data-category="sherwani-velvet">
                 <div class="category-header">
                     <i class="fas fa-gem"></i>
-                    <h2>Sherwani: Velvet Collection</h2>
+                    <h2>Sherwani: Velvet</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
                             <div class="slider-container" data-slider-id="2">
-                                <div class="design-number">Design #VE-002</div>
+                                <div class="design-number">Design #SH25016</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVsdmV0JTIwc2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Velvet Royal Sherwani">
-                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Velvet Royal Sherwani Detail">
+                                    <img src="Collections\Sherwani\SH25016\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25016\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25016\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25017</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25017\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25017\Back.jpg" alt="Royal Farma Sherwani Back"> -->
+                                    <img src="Collections\Sherwani\SH25017\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -549,24 +991,48 @@
             </section>
 
             <!-- Sherwani: Georgette -->
-            <section class="category">
+            <section class="category" data-category="sherwani-georgette">
                 <div class="category-header">
                     <i class="fas fa-wind"></i>
-                    <h2>Sherwani: Georgette Collection</h2>
+                    <h2>Sherwani: Georgette</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
-                            <div class="slider-container" data-slider-id="3">
-                                <div class="design-number">Design #GE-003</div>
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25018</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Georgette Elegance Sherwani">
-                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Georgette Elegance Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25018\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25018\Back.jpg" alt="Royal Farma Sherwani Back"> -->
+                                    <img src="Collections\Sherwani\SH25018\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25024</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25024\Front.jpg" alt="Royal Farma Sherwani">
+                                    <!-- <img src="Collections\Sherwani\SH25024\Back.jpg" alt="Royal Farma Sherwani Back"> -->
+                                    <img src="Collections\Sherwani\SH25024\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -581,24 +1047,94 @@
             </section>
 
             <!-- Sherwani: Diverse Fabric -->
-            <section class="category">
+            <section class="category" data-category="sherwani-diverse-fabric">
                 <div class="category-header">
                     <i class="fas fa-tshirt"></i>
-                    <h2>Sherwani: Diverse Fabric Collection</h2>
+                    <h2>Sherwani: Diverse Fabric</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
-                            <div class="slider-container" data-slider-id="4">
-                                <div class="design-number">Design #DF-004</div>
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25005</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNoZXJ3YW5pfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Diverse Fabric Sherwani">
-                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80" alt="Diverse Fabric Sherwani Detail">
+                                    <img src="Collections\Sherwani\SH25005\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25005\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25005\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25006</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25006\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25006\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25006\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25007</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25007\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25007\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25007\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="2">
+                                <div class="design-number">Design #SH25016</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="Collections\Sherwani\SH25016\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Sherwani\SH25016\Back.jpg" alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Sherwani\SH25016\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -613,10 +1149,10 @@
             </section>
 
             <!-- Open Indo: Georgette -->
-            <section class="category">
+            <section class="category" data-category="open-indo-georgette">
                 <div class="category-header">
                     <i class="fas fa-vest"></i>
-                    <h2>Open Indo: Georgette Collection</h2>
+                    <h2>Open Indo: Georgette</h2>
                 </div>
                 <div class="products">
                     <div class="product">
@@ -644,11 +1180,43 @@
                 </div>
             </section>
 
+            <!-- Open Indo: Diverse Fabric -->
+            <section class="category" data-category="open-indo-diverse-fabric">
+                <div class="category-header">
+                    <i class="fas fa-vest"></i>
+                    <h2>Open Indo: Diverse Fabric</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="5a">
+                                <div class="design-number">Design #OID-005A</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kb3dlc3Rlcm4lMjB3ZWFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Open Indo Diverse Fabric">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZG93ZXN0ZXJuJTIwd2VhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Open Indo Diverse Fabric Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Semi Indo: Diverse Fabric -->
-            <section class="category">
+            <section class="category" data-category="semi-indo-diverse-fabric">
                 <div class="category-header">
                     <i class="fas fa-vest-patches"></i>
-                    <h2>Semi Indo: Diverse Fabric Collection</h2>
+                    <h2>Semi Indo: Diverse Fabric</h2>
                 </div>
                 <div class="products">
                     <div class="product">
@@ -676,17 +1244,49 @@
                 </div>
             </section>
 
-            <!-- Jodhpuri: Diverse Fabric -->
-            <section class="category">
+            <!-- Indo Western: Diverse Fabric -->
+            <section class="category" data-category="indo-western-diverse-fabric">
                 <div class="category-header">
-                    <i class="fas fa-user-tie"></i>
-                    <h2>Jodhpuri: Diverse Fabric Collection</h2>
+                    <i class="fas fa-vest-patches"></i>
+                    <h2>Indo Western: Diverse Fabric</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
                             <div class="slider-container" data-slider-id="7">
-                                <div class="design-number">Design #JD-007</div>
+                                <div class="design-number">Design #IW-007</div>
+                                <div class="zoom-controls">
+                                    <div class="zoom-btn" title="Zoom In">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kb3dlc3Rlcm4lMjB3ZWFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Indo Western Diverse Fabric">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZG93ZXN0ZXJuJTIwd2VhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Indo Western Diverse Fabric Back">
+                                </div>
+                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                <div class="slider-nav">
+                                    <div class="slider-dot active"></div>
+                                    <div class="slider-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jodhpuri: Diverse Fabric -->
+            <section class="category" data-category="jodhpuri-diverse-fabric">
+                <div class="category-header">
+                    <i class="fas fa-user-tie"></i>
+                    <h2>Jodhpuri: Diverse Fabric</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="slider-container" data-slider-id="8">
+                                <div class="design-number">Design #JD-008</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
@@ -709,16 +1309,16 @@
             </section>
 
             <!-- Kurta: Chicken Fabric -->
-            <section class="category">
+            <section class="category" data-category="kurta-chicken">
                 <div class="category-header">
                     <i class="fas fa-tshirt"></i>
-                    <h2>Kurta: Chicken Fabric Collection</h2>
+                    <h2>Kurta: Chicken Fabric</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
-                            <div class="slider-container" data-slider-id="8">
-                                <div class="design-number">Design #KC-008</div>
+                            <div class="slider-container" data-slider-id="9">
+                                <div class="design-number">Design #KC-009</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
@@ -741,16 +1341,16 @@
             </section>
 
             <!-- Kurta: Pintex -->
-            <section class="category">
+            <section class="category" data-category="kurta-pintex">
                 <div class="category-header">
                     <i class="fas fa-tshirt"></i>
-                    <h2>Kurta: Pintex Collection</h2>
+                    <h2>Kurta: Pintex</h2>
                 </div>
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
-                            <div class="slider-container" data-slider-id="9">
-                                <div class="design-number">Design #KP-009</div>
+                            <div class="slider-container" data-slider-id="10">
+                                <div class="design-number">Design #KP-010</div>
                                 <div class="zoom-controls">
                                     <div class="zoom-btn" title="Zoom In">
                                         <i class="fas fa-search-plus"></i>
@@ -777,14 +1377,14 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Visit Our Store</h3>
-                    <p>123 Fashion Street</p>
-                    <p>Mumbai, Maharashtra 400001</p>
+                    <p>Shop No. 03/323, Ground Floor, Bazar Road</p>
+                    <p>Bandra (W), Mumbai, Maharashtra 400050</p>
                     <p>India</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                    <p><i class="fas fa-envelope"></i> info@farooqui.com</p>
+                    <p><i class="fas fa-phone"></i> +91 82240 08224</p>
+                    <p><i class="fas fa-envelope"></i> farooquiclothes@gmail.com</p>
                     <p><i class="fas fa-clock"></i> Mon-Sat: 10AM-8PM</p>
                 </div>
                 <div class="footer-section">
@@ -832,6 +1432,41 @@
         const sliderStates = new Map();
         
         document.addEventListener('DOMContentLoaded', function() {
+            // Category filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const categories = document.querySelectorAll('.category');
+            
+            // Filter button click event
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    if (category === 'all') {
+                        // Show all categories
+                        categories.forEach(cat => {
+                            cat.style.display = 'block';
+                        });
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Filter categories
+                        categories.forEach(cat => {
+                            if (cat.getAttribute('data-category') === category) {
+                                cat.style.display = 'block';
+                                // Scroll to the category
+                                cat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            } else {
+                                cat.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+
             // Initialize all sliders
             const sliders = document.querySelectorAll('.slider-container');
             
@@ -883,7 +1518,7 @@
                 setInterval(() => {
                     currentSlide = (currentSlide + 1) % totalSlides;
                     updateSlider();
-                }, 5000);
+                }, 10000);
             });
 
             // Zoom functionality
